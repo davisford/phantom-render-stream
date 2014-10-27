@@ -79,8 +79,6 @@ var loop = function() {
     });
   }
 
-  if (line.customHeaders) page.customHeaders = line.customHeaders;
-
   if (line.phantomConsole === true) {
     page.onConsoleMessage = function (msg) {
       console.log('\tconsole: ' + msg);

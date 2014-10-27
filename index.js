@@ -297,12 +297,8 @@ var create = function(opts) {
       ropts.sent = Date.now();
       ropts.tries = 0;
       if (ropts.crop === true) ropts.crop = {top:0, left:0};
-      ropts.customHeaders = opts.customHeaders || {};
-
-      ropts.cookies = opts.cookies || [];
 
       ropts.phantomConsole = opts.phantomConsole || false;
-
       ropts.injectJs = opts.injectJs || [];
 
       mkdir(function(err) {
