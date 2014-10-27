@@ -301,6 +301,8 @@ var create = function(opts) {
 
       ropts.cookies = opts.cookies || [];
 
+      ropts.phantomConsole = opts.phantomConsole || false;
+
       mkdir(function(err) {
         if (err) return proxy.destroy(err);
         ropts.tries++;

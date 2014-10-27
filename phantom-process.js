@@ -81,6 +81,12 @@ var loop = function() {
 
   if (line.customHeaders) page.customHeaders = line.customHeaders;
 
+  if (line.phantomConsole === true) {
+    page.onConsoleMessage = function (msg) {
+      console.log('\tconsole: ' + msg);
+    };
+  }
+
   if (line.maxRenders) maxRenders = line.maxRenders;
   page.viewportSize = {
     width: line.width || 1280,
