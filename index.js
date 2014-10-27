@@ -303,6 +303,8 @@ var create = function(opts) {
 
       ropts.phantomConsole = opts.phantomConsole || false;
 
+      ropts.injectJs = opts.injectJs || [];
+
       mkdir(function(err) {
         if (err) return proxy.destroy(err);
         ropts.tries++;

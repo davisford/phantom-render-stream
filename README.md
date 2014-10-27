@@ -61,6 +61,7 @@ var render = phantom({
   cookies     : [{name: 'connect.sid', value: 'abc123'}] // Array of cookies, see http://phantomjs.org/api/webpage/method/add-cookie.html
   customHeaders : { 'DNT': '1' }, // Any custom headers you want set @see http://phantomjs.org/api/webpage/property/custom-headers.html
   phantomConsole : false     // Default to false; enable if you want console.log messages inside phantom to get dumped to stdout
+  injectJs    : ['./includes/my-polyfill.js'] // Array of paths to polyfill components or external scripts that will be injected when the page is initialized
 });
 ```
 
@@ -144,6 +145,21 @@ var render = phantom({
 
 You probably want to set the `expires` property to something fairly short, as there may not be a guarantee that a pooled phantom process won't
 pick up the cookie for a particular render job, and you may want that session to only be valid for an individual job run.
+
+## Injecting JavaScript
+Sometimes you need to inject [polyfills, e.g. PhantomJS Date.parse is broken](https://github.com/ariya/phantomjs/issues/11151).
+You can add paths to local files to polyfill broken / missing features of PhantomJS using the `opts.injectJs` property.  Example:
+
+```javascript
+var phantom = render({
+  injectJs: ['./includes/my-date-polyfill.js']
+});
+```
+
+Obviously, make sure the path './includes/my-date-polyfill.js' is resolvable from the project root, or pass in an absolute path.
+When the page is [initialized](http://phantomjs.org/api/webpage/handler/on-initialized.html), any scripts you listed there will
+be injected before any rendering happens.
+
 
 ## Extra Dependencies
 
