@@ -59,6 +59,7 @@ var render = phantom({
   phantomFlags: ['--ignore-ssl-errors=true'] // Defaults to []. Command line flags passed to phantomjs
   maxRenders  : 20,          // How many renders can a phantom process make before being restarted. Defaults to 20
   cookies     : [{name: 'connect.sid', value: 'abc123'}] // Array of cookies, see http://phantomjs.org/api/webpage/method/add-cookie.html
+  customHeaders : { 'DNT': '1' } // Any custom headers you want set @see http://phantomjs.org/api/webpage/property/custom-headers.html
 });
 ```
 
